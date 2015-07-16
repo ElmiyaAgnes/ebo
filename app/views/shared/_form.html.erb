@@ -1,0 +1,99 @@
+
+<table class="container">
+
+ <div>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+
+  <tr><td><%= f.label :first_name %></td>
+    <td><%= f.text_field :first_name , :required => true %></td>
+    <td><%= f.label :middle_name %></td>
+    <td><%= f.text_field :middle_name %></td>
+    <td><%= f.label :last_name %></td>
+    <td><%= f.text_field :last_name ,:required => true %></td></tr>
+
+  <tr><td><%= f.label :date_of_birth %></td>
+      <td><%= f.date_field:date_of_birth, class: 'datepicker' %> </td>
+
+      <td><%= f.label :employee_id, "Employee id " %></td>
+      <td><%= f.text_field :employee_id ,:required => true %></td>
+      <td><%= f.label :gender ,"Gender" %></td>
+      <td><%= f.radio_button(:gender,:male) %>
+      <%= f.label :gender,"Male" %>
+      <%= f.radio_button(:gender,:female) %>
+      <%= f.label :gender,"Female" %></td></tr>
+     
+
+     <tr><td><%= f.label :email %></td>
+      <td><%= f.text_field :email ,:required => true%></td>
+ 
+  
+    <td><%= f.label :login_id %></td>
+        <td><%= f.text_field :login_id ,:required => true%></td></tr><br>
+        
+
+        <% if current_page?(action: 'new') %>
+
+        <td><%=  f.label :password %></td>
+        <td><%= f.password_field  :password ,:required => true %></td>
+        <td><%= f.label :password_confirmation %></td>
+        <td><%=f.password_field :password_confirmation, :required => true %></td></tr>
+        <%end%>
+    
+   <tr><td><%= f.label :time_zone,'Time Zone' %></td>
+        <td><%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones) %></td>
+        <td><%= f.label :designation_id,'Designation' %></td>
+        <td><%= f.select(:designation_id, Designation.all.map{ |d| [d.designation_name,d.id]},:allow_blank =>true) %></td>
+        <td><%= f.label :date_of_joining %></td>
+        <td><%= f.date_field:date_of_birth, class: 'datepicker'  %> </td></tr>
+
+
+  <tr><td><%= f.label :education %></td>
+      <td><%= f.text_area :education ,:required => true %></td>
+      <td><%= f.label :comments %></td>
+      <td><%= f.text_area :comments %></td>
+      <td><%= f.label :work_phone%></td>
+      <td><%= f.text_field :work_phone ,:required => true%></td></tr>
+
+<% if params[:controller] == "admin/users" %>
+  <tr><td><%= f.label :role_id,'Role' %></td>
+        <td><%= f.select(:role_id,@roles) %></td>
+        
+     <td><%= f.radio_button(:is_active,true) %>
+      <%= f.label :is_active,"Is Active" %></td>
+      <td><%= f.radio_button(:is_active,false) %>
+      <%= f.label :is_active,"Is locked" %></td></tr>
+
+
+
+    
+     <tr class="check-value">
+     
+     <td><%= f.label :deactivated_on%></td>
+    <td><%= f.date_select(:deactivated_on, order: [:month, :day, :year], start_year: 1990, :include_blank => true) %> </td>
+    <td><%= f.label :reason,'Reason' %></td>
+    <td><%= f.select(:reason, options_for_select([[''],['No longer an employee with us'], ['Long Medical leave'], ['Absconding',]])) %></td></tr>
+    
+    <%end%>
+    
+<tr><td/> <td/><td>  
+ <p align ="center"> <%= f.submit %> </p>
+</td></tr>  
+
+
+ </div>
+
+</table>

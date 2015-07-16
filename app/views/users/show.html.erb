@@ -1,0 +1,64 @@
+<% if(@user.id == current_user.id) %>
+<tr><p align="right"><b><strong>welcome,<%=@user.email %></strong></b>|
+<td><%=link_to "edit", edit_user_path, data: { no_turbolink: true } %></td>|
+
+
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p></tr>
+ <p class= "container">
+  <strong>Name:</strong>
+  <%= @user.first_name %>&nbsp&nbsp&nbsp
+
+
+  <strong>Middle Name:</strong>
+  <%= @user.middle_name %>&nbsp&nbsp&nbsp
+
+<strong>Last Name:</strong>
+  <%= @user.last_name %><br><br><br>
+
+<strong>Date of Birth:</strong>
+  <%= @user.date_of_birth %>&nbsp&nbsp&nbsp
+
+
+<strong>Employee Id</strong>
+  <%= @user.employee_id %>
+
+
+  <strong>Gender:</strong>
+  <%= @user.gender %><br><br><br>
+
+  <strong>Email:</strong>
+  <%= @user.email %>&nbsp&nbsp&nbsp
+
+ 
+
+  <strong>Login ID:</strong>
+  <%= @user.login_id %>&nbsp&nbsp&nbsp
+
+ 
+
+  <strong>Time Zone:</strong>
+  <%= @user.time_zone %><br><br><br>
+
+<strong>Designation ID:</strong>
+  <%= @user.designation.designation_name %>&nbsp&nbsp&nbsp
+
+
+  <strong>Date of Joining:</strong>
+  <%= @user.date_of_joining %><br><br><br>
+
+ 
+
+  <strong>Education:</strong>
+  <%= @user.education %>&nbsp&nbsp&nbsp
+
+<strong>Comments:</strong>
+  <%= @user.comments %>&nbsp&nbsp&nbsp
+
+
+  <strong>Work Phone:</strong>
+  <%= @user.work_phone %><br><br><br>
+
+</p>
+
+
+<% end %>

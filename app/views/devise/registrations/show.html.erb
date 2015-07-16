@@ -1,0 +1,71 @@
+ <p>
+  <strong>Name:</strong>
+  <%= @user.first_name %>&nbsp&nbsp&nbsp
+
+
+  <strong>Middle Name:</strong>
+  <%= @user.middle_name %>&nbsp&nbsp&nbsp
+
+<strong>Last Name:</strong>
+  <%= @user.last_name %><br><br><br>
+
+<strong>Date of Birth:</strong>
+  <%= @user.date_of_birth %>&nbsp&nbsp&nbsp
+
+
+<strong>Employee Id</strong>
+  <%= @user.employee_id %>&nbsp&nbsp&nbsp
+
+
+  <strong>Gender:</strong>
+  <%= @user.gender %>&nbsp&nbsp&nbsp
+
+  <strong>Email:</strong>
+  <%= @user.email %><br><br><br>
+
+ 
+  <strong>Login ID:</strong>
+  <%= @user.login_id %>&nbsp&nbsp&nbsp
+
+ 
+  <strong>Time Zone:</strong>
+  <%= @user.time_zone %>&nbsp&nbsp&nbsp
+
+<strong>Designation ID:</strong>
+  <%= @user.designation.designation_name %>&nbsp&nbsp&nbsp
+
+<strong>role:</strong>
+  <%= try(@user.role.id)%>&nbsp&nbsp&nbsp
+
+
+  <strong>Date of Joining:</strong>
+  <%= @user.date_of_joining %><br><br><br>
+
+ 
+
+  <strong>Education:</strong>
+  <%= @user.education %>&nbsp&nbsp&nbsp
+
+<strong>Comments:</strong>
+  <%= @user.comments %>&nbsp&nbsp&nbsp
+
+
+  <strong>Work Phone:</strong>
+  <%= @user.work_phone %><br><br><br>
+
+
+  <strong>Is Active:</strong>
+  <%= @user.is_active %>&nbsp&nbsp&nbsp
+
+<strong>Deactivated On: :</strong>
+  <%= @user.deactivated_on %>&nbsp&nbsp&nbsp
+
+
+  <strong>Reason:</strong>
+  <%= @user.reason %>&nbsp&nbsp&nbsp
+<br><br><br>
+ 
+
+
+
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
